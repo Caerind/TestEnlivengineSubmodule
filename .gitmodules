@@ -1,0 +1,3 @@
+[submodule "Enlivengine"]
+	path = Enlivengine
+	url = https://github.com/Caerind/Enlivengine
