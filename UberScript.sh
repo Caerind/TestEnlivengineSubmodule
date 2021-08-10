@@ -36,16 +36,16 @@ CompileShaders()
 {
 	path_shaderc=""
 	if [[ "$platform" == "windows" ]]; then
-		path_shaderc="./build/src/EnlivengineThirdParty/bgfx/Debug/shaderc.exe"
+		path_shaderc="./build/Enlivengine/src/EnlivengineThirdParty/bgfx/Debug/shaderc.exe"
 	else
-		path_shaderc="./build/src/EnlivengineThirdParty/bgfx/shaderc"
+		path_shaderc="./build/Enlivengine/src/EnlivengineThirdParty/bgfx/shaderc"
 	fi
 	if [ ! -x "$path_shaderc" ]; then
 		cmake --build build --target shaderc --config Debug
 	fi
 
 	output_path="build/Shaders"
-	path_bgfx_include="src/EnlivengineThirdParty/bgfx/bgfx/src"
+	path_bgfx_include="Enlivengine/src/EnlivengineThirdParty/bgfx/bgfx/src"
 
 	mkdir -p "$output_path"
 	mkdir -p "$output_path/dx9"
@@ -89,7 +89,7 @@ CompileShaders()
 		$path_shaderc -f "${vertex_shader}" -o "${output_path}/spirv/${basenamewoext}.vs.bin" --platform linux -p spirv --type vertex --verbose -i $path_bgfx_include
 	done
 
-	all_fragment_shaders="`find src/Enlivengine/Shaders -name *.fs`"
+	all_fragment_shaders="`find Enlivengine/src/Enlivengine/Shaders -name *.fs`"
 	for fragment_shader in $all_fragment_shaders
 	do
 		basename="`basename $fragment_shader`"
@@ -134,11 +134,11 @@ BuildEnlivengine()
 Tests()
 {
 	if [[ "$platform" == "windows" ]]; then
-		./build/examples/$config/PlatformExample.exe # default path for Visual Studio users
-		./build/tests/$config/EnlivengineTests.exe # default path for Visual Studio users
+		./build/Enlivengine/examples/$config/PlatformExample.exe # default path for Visual Studio users
+		./build/Enlivengine/tests/$config/EnlivengineTests.exe # default path for Visual Studio users
 	else
-		./build/examples/PlatformExample.exe # for Linux/Unix GCC users
-		./build/tests/EnlivengineTests # for Linux/Unix GCC users
+		./build/Enlivengine/examples/PlatformExample.exe # for Linux/Unix GCC users
+		./build/Enlivengine/tests/EnlivengineTests # for Linux/Unix GCC users
 	fi
 }
 
