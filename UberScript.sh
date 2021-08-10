@@ -129,6 +129,7 @@ BuildEnlivengine()
 	cmake --build build --target EnlivengineTests --config $config
 	cmake --build build --target PlatformExample --config $config
 	cmake --build build --target 3DSceneExample --config $config
+	cmake --build build --target MyGame --config $config
 }
 
 Tests()
