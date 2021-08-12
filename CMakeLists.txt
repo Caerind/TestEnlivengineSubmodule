@@ -19,3 +19,5 @@ set_property(GLOBAL PROPERTY PREDEFINED_TARGETS_FOLDER "CMake")
 
 add_subdirectory(Enlivengine)
 add_subdirectory(MyGame)
+
+set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT MyGame)
